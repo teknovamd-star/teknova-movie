@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEKNOVA GAMES</title>
+
+<style>
+body {
+  margin:0;
+  font-family:Arial;
+  background: linear-gradient(180deg,#000428,#004e92);
+  color:white;
+}
+
+/* HEADER */
+.header {
+  padding:15px;
+  text-align:center;
+  font-size:22px;
+  background:#021a3a;
+}
+
+/* LOGO */
+.logo {
+  text-align:center;
+  margin-top:10px;
+}
+
+.logo img {
+  width:95%;
+  max-width:450px;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(0,0,0,0.7);
+  transition:0.3s;
+}
+
+.logo img:hover {
+  transform:scale(1.05);
+}
+
+/* NAV */
+.nav {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:10px;
+}
+
+.nav button {
+  padding:15px 30px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.movies { background:#4caf50; color:white; }
+.games { background:#ff9800; color:white; }
+
+/* SECTION */
+.section-title {
+  padding:10px;
+}
+
+/* PPSSPP */
+.ppsspp {
+  margin:15px;
+  background:#021a3a;
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 0 15px rgba(0,0,0,0.5);
+}
+
+.ppsspp img {
+  width:100%;
+  border-radius:10px;
+}
+
+.download-btn {
+  margin-top:10px;
+  padding:12px 25px;
+  background:#ff9800;
+  border:none;
+  border-radius:8px;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* GAMES */
+.games-container {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:10px;
+}
+
+.game {
+  background:#021a3a;
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.game:hover {
+  transform:scale(1.05);
+}
+
+.game img {
+  width:100%;
+  border-radius:10px;
+}
+
+.play-btn {
+  margin-top:10px;
+  padding:10px;
+  background:#ff9800;
+  border:none;
+  color:white;
+  border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">🎮 TEKNOVA GAMES ZONE</div>
+
+<!-- LOGO -->
+<div class="logo">
+<img src="https://files.catbox.moe/rub1ck.jpg">
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="movies" onclick="location.href='index.html'">🎬 Movies</button>
+  <button class="games">🎮 Games</button>
+</div>
+
+<!-- PPSSPP -->
+<h2 class="section-title">🔥 PPSSPP GOLD APP</h2>
+
+<div class="ppsspp">
+  <img src="https://files.catbox.moe/ts6kve.jpg">
+
+  <h3>PPSSPP GOLD APP 💦</h3>
+  <p>📥 App Link 👇</p>
+
+  <button class="download-btn"
+  onclick="window.open('https://www.mediafire.com/file/o814xggqmcdh5g4/ppsspp-gold_1.19.3-RisTechy.com.apk/file?dkey=cumon27af0c&r=963')">
+  Download App (30MB) 🔥
+  </button>
+
+  <p style="margin-top:10px; color:#ccc;">
+  APP SIZE : 30MB 🔥 <br>
+  > TEKNOVA TECH
+  </p>
+</div>
+
+<!-- GAMES -->
+<h2 class="section-title">🔥 Play Games</h2>
+
+<div class="games-container">
+
+  <div class="game" onclick="playGame('https://html5games.com/Game/Helix-Jump')">
+    <img src="https://img.freepik.com/free-vector/game-background-design_23-2149007810.jpg">
+    <p>Helix Jump</p>
+    <button class="play-btn">Play</button>
+  </div>
+
+  <div class="game" onclick="playGame('https://html5games.com/Game/Flappy-Bird')">
+    <img src="https://img.freepik.com/free-vector/arcade-game-background_23-2148997820.jpg">
+    <p>Flappy Bird</p>
+    <button class="play-btn">Play</button>
+  </div>
+
+</div>
+
+<script>
+function playGame(url){
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
