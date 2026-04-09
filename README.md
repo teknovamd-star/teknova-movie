@@ -1,6 +1,6 @@
 <!-- 🔥 ANIMATED HEADER -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?color=00BFFF&size=35&center=true&vCenter=true&width=700&lines=🚀+TEKNOVA+MOVIE;💻+Next+Gen+Movie+Platform;🎬+Watch+%2B+Download+Free;🎮+Play+Games+Online;⚡+Powered+By+Technology">
+  <img src="https://readme-typing-svg.herokuapp.com/?color=00BFFF&size=35&center=true&vCenter=true&width=700&lines=🚀+TEKNOVA+MOVIE;💻+Next+Gen+Movie+Platform;🎬+Watch+%2B+Download+Free;🎮+Play+Games+Online;⚡+Powered+By+TEKNOVA TECH">
 </p>
 
 ---
