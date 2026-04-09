@@ -25,7 +25,7 @@
 ## 🖼️ Preview
 
 <p align="center">
-  <img src="https://files.catbox.moe/ru1n9w.jpg" width="250">
+  <img src="https://files.catbox.moe/rub1ck.jpg" width="250">
   <img src="https://example.com/file.jpg" width="250">
 </p>
 
@@ -70,5 +70,5 @@
 ---
 
 <p align="center">
-  ⚡ Built with passion by <b>TEKNOVA</b> ⚡
+  ⚡ Built with passion by <b>TEKNOVA TECH</b> ⚡
 </p>
