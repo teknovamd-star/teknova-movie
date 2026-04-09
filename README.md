@@ -91,7 +91,7 @@
 
 ## 📡 LIVE WEBSITE
 <p align="center">
-  <a href="https://YOURUSERNAME.github.io/teknova-movie/">
+  <a href="https://teknovamd-star.github.io/teknova-movie/">
     <img src="https://img.shields.io/badge/🚀 Visit Website-00BFFF?style=for-the-badge&logo=google-chrome&logoColor=white">
   </a>
 </p>
