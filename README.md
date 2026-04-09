@@ -49,7 +49,7 @@
 ---
 
 ## 📡 Live Website
-👉 https://yourusername.github.io/teknova-movie/
+👉 https://teknovamd-star.github.io/teknova-movie/
 
 ---
 
