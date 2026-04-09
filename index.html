@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEKNOVA MOVIES</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(180deg,#021a3a,#010c1f);
+  color: white;
+}
+
+/* HEADER */
+.header {
+  padding: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  background:#032a5c;
+  text-align:center;
+}
+
+/* NAV */
+.nav {
+  display:flex;
+  gap:10px;
+  padding:10px;
+  justify-content:center;
+}
+
+.nav button {
+  padding:15px 30px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.movies-btn { background:#4caf50; color:white; }
+.games-btn { background:#ff9800; color:white; }
+
+/* LOGO */
+.logo {
+  text-align:center;
+}
+.logo img {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 15px;
+  margin-top:10px;
+}
+
+/* WELCOME */
+.welcome {
+  padding:15px;
+  text-align:center;
+}
+
+/* SEARCH */
+.search-box {
+  display: flex;
+  margin: 15px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 18px;
+  border-radius: 30px 0 0 30px;
+  border: none;
+  font-size:16px;
+}
+
+.search-box button {
+  padding: 18px 25px;
+  border: none;
+  background: #00bcd4;
+  color: white;
+  border-radius: 0 30px 30px 0;
+  font-size:16px;
+}
+
+/* CATEGORY */
+.categories {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.cat {
+  background: #0b2c5a;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* MOVIES */
+.movies {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.movie {
+  background: #0b2c5a;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition:0.3s;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+.movie img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.msg {
+  text-align:center;
+  padding:10px;
+  color:#ccc;
+}
+
+.load-more {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.popup-content {
+  background:#021a3a;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  width:90%;
+}
+
+/* NEW TRAILER BOX */
+#trailerBox {
+  margin-top:10px;
+}
+
+/* BUTTONS */
+.popup button {
+  margin:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:5px;
+}
+
+.download { background:#00bcd4; }
+.watch { background:#4caf50; }
+
+/* FOOTER */
+.footer {
+  text-align:center;
+  padding:20px;
+  color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">TEKNOVA MOVIES</div>
+
+<div class="nav">
+  <button class="movies-btn">🎬 Movies</button>
+  <button class="games-btn" onclick="location.href='games.html'">🎮 Games Zone</button>
+</div>
+
+<div class="logo">
+<img src="https://files.catbox.moe/ru1n9w.jpg">
+</div>
+
+<div class="welcome">
+<h2>👋 KARIBU TEKNOVA MOVIES</h2>
+<p>Tazama movie, trailers na download kwa urahisi 🔥</p>
+</div>
+
+<!-- SEARCH -->
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search movies...">
+<button onclick="searchMovies()">Search</button>
+</div>
+
+<!-- CATEGORY -->
+<div class="categories">
+<div class="cat" onclick="searchCategory('action')">Action</div>
+<div class="cat" onclick="searchCategory('comedy')">Comedy</div>
+<div class="cat" onclick="searchCategory('horror')">Horror</div>
+<div class="cat" onclick="searchCategory('animation')">Animation</div>
+<div class="cat" onclick="searchCategory('romance')">❤️ Romance</div>
+</div>
+
+<h2 style="padding:10px;">🔥 Trending Movies</h2>
+
+<div class="movies" id="movies"></div>
+<div class="msg" id="message"></div>
+
+<button class="load-more" onclick="loadMore()">Load More</button>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3 id="movieTitle"></h3>
+
+    <!-- NEW TRAILER -->
+    <div id="trailerBox"></div>
+
+    <br>
+    <button class="watch" onclick="watchMovie()">▶️ Watch Full</button>
+    <button class="download" onclick="downloadMovie()">⬇️ Download</button>
+
+    <br><br>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<div class="footer">
+  © 2026 By TEKNOVA TECH 🚀
+</div>
+
+<script>
+const API_KEY = "1a3c9e88";
+
+let page = 1;
+let currentSearch = "avengers";
+let selectedMovie = "";
+
+window.onload = () => {
+  startSearch(currentSearch);
+};
+
+function startSearch(query){
+  document.getElementById("movies").innerHTML = "";
+  document.getElementById("message").innerHTML = "Loading...";
+  page = 1;
+  currentSearch = query;
+  loadMovies();
+}
+
+function loadMovies() {
+  fetch(`https://www.omdbapi.com/?s=${currentSearch}&page=${page}&apikey=${API_KEY}`)
+    .then(res => res.json())
+    .then(data => {
+
+      if(data.Response === "False"){
+        document.getElementById("message").innerHTML = "❌ Movie haijapatikana!";
+        return;
+      }
+
+      document.getElementById("message").innerHTML = "";
+
+      data.Search.forEach(movie=>{
+        document.getElementById("movies").innerHTML += `
+        <div class="movie" onclick="openPopup('${movie.Title}')">
+          <img src="${movie.Poster !== "N/A" ? movie.Poster : 'https://via.placeholder.com/300'}">
+          <p>${movie.Title}</p>
+        </div>`;
+      });
+
+    });
+}
+
+function searchMovies(){
+  let val = document.getElementById("searchInput").value.trim();
+  if(val===""){ alert("Andika jina la movie!"); return;}
+  startSearch(val);
+}
+
+document.getElementById("searchInput").addEventListener("keypress", function(e){
+  if(e.key==="Enter"){ searchMovies(); }
+});
+
+function searchCategory(cat){
+  startSearch(cat);
+}
+
+function loadMore(){
+  page++;
+  loadMovies();
+}
+
+/* ✅ FIXED TRAILER */
+function openPopup(title){
+  selectedMovie = title;
+
+  document.getElementById("movieTitle").innerText = title;
+
+  let query = encodeURIComponent(title + " trailer");
+
+  document.getElementById("trailerBox").innerHTML = `
+    <div style="padding:20px;">
+      <p>▶️ Watch Trailer on YouTube</p>
+      <button onclick="openYouTube('${query}')"
+      style="padding:10px 20px; background:red; color:white; border:none; border-radius:5px;">
+      Open YouTube
+      </button>
+    </div>
+  `;
+
+  document.getElementById("popup").style.display="flex";
+}
+
+function openYouTube(query){
+  window.open("https://www.youtube.com/results?search_query=" + query);
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+  document.getElementById("trailerBox").innerHTML="";
+}
+
+function watchMovie(){
+  window.open("https://www.google.com/search?q=watch+" + selectedMovie);
+}
+
+function downloadMovie(){
+  window.open("https://www.google.com/search?q=download+" + selectedMovie);
+}
+</script>
+
+</body>
+</html>
