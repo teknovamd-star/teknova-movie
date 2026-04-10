@@ -38,7 +38,7 @@
 ## 🖼️ PREVIEW
 
 <p align="center">
-  <img src="https://files.catbox.moe/xntfri.image" width="260" style="margin:10px;">
+  <img src="https://n.uguu.se/kgFAYJoe.jpg" width="260" style="margin:10px;">
   <img src="https://example.com/file.jpg" width="260" style="margin:10px;">
 </p>
 
