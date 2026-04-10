@@ -8,7 +8,7 @@
 <h1 align="center">🎬 TEKNOVA MOVIE</h1>
 
 <p align="center">
-  <img src="https://files.catbox.moe/ru1n9w.jpg" width="180" style="border-radius:50%; box-shadow:0 0 25px #00BFFF;">
+  <img src="https://example.com/file.jpg" width="180" style="border-radius:50%; box-shadow:0 0 25px #00BFFF;">
 </p>
 
 <p align="center">
